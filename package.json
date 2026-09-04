@@ -2,7 +2,7 @@
   "name": "airtable-cloudinary-sync",
   "version": "1.0.0",
   "description": "Worker para enviar imagens do Airtable para Cloudinary",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "deploy": "wrangler deploy"
   },
