@@ -1,5 +1,5 @@
 name = "airtable-cloudinary-sync"
-main = "index.js"
+main = "src/index.js"
 compatibility_date = "2024-01-01"
 
 # Gatilho de tempo: Roda a cada 10 minutos
