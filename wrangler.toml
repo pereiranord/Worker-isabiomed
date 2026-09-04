@@ -1,0 +1,14 @@
+name = "airtable-cloudinary-sync"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+# Gatilho de tempo: Roda a cada 10 minutos
+[triggers]
+crons = ["*/10 * * * *"]
+
+# Variáveis públicas (não coloque senhas aqui)
+[vars]
+AIRTABLE_BASE = "appJn6FJhobras7Hg"
+CLOUD_NAME = "s44qtoq1"
+
+# O AIRTABLE_TOKEN será cadastrado como SECRET painel do Cloudflare!
