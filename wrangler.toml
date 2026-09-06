@@ -1,0 +1,10 @@
+name = "airtable-cloudinary-sync"
+main = "index.js"
+compatibility_date = "2024-01-01"
+
+[triggers]
+crons = ["*/10 * * * *"]
+
+[vars]
+AIRTABLE_BASE = "appJn6FJhobras7Hg"
+CLOUD_NAME = "SEU_PRODUCT_ENVIRONMENT_AQUI"
