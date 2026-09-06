@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+
+html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+
+body {
+  background-color: #F8F4ED;
+  color: #241C1A;
+  /* espaço para a barra inferior no celular */
+  padding-bottom: calc(4.75rem + env(safe-area-inset-bottom));
+}
+@media (min-width: 768px) { body { padding-bottom: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.focus-ring { outline: none; }
+.focus-ring:focus-visible {
+  outline: 2px solid #CBA76B;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ── Névoa ──────────────────────────────────────────────────────────
+   As bordas da imagem se dissolvem no fundo em vez de terminarem numa
+   linha reta. Duas camadas de máscara: uma radial (suaviza os cantos)
+   e uma linear vertical (funde a base no fundo escuro da seção).      */
+.fog {
+  -webkit-mask-image:
+    radial-gradient(118% 96% at 50% 42%, #000 38%, rgba(0,0,0,0.6) 68%, transparent 86%),
+    linear-gradient(to bottom, #000 55%, rgba(0,0,0,0.4) 82%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    radial-gradient(118% 96% at 50% 42%, #000 38%, rgba(0,0,0,0.6) 68%, transparent 86%),
+    linear-gradient(to bottom, #000 55%, rgba(0,0,0,0.4) 82%, transparent 100%);
+  mask-composite: intersect;
+}
+
+/* brilho difuso atrás da imagem, dá "atmosfera" à névoa */
+.fog-glow::before {
+  content: "";
+  position: absolute;
+  inset: -12%;
+  background: radial-gradient(60% 50% at 50% 45%, rgba(203,167,107,0.20), transparent 70%);
+  filter: blur(38px);
+  pointer-events: none;
+}
+
+/* ── Botões ─────────────────────────────────────────────────────── */
+.btn {
+  @apply focus-ring inline-flex items-center justify-center gap-2 rounded-full
+         px-6 py-3.5 text-[0.95rem] font-medium transition-all duration-200
+         active:scale-[0.97];
+}
+.btn-primary {
+  @apply btn text-noir;
+  background: linear-gradient(140deg, #E3C892 0%, #A8804A 78%);
+  box-shadow: 0 10px 24px -12px rgba(168,128,74,0.85);
+}
+.btn-primary:hover { filter: brightness(1.06); }
+
+.btn-outline {
+  @apply btn border border-current text-ivory/85;
+}
+.btn-outline:hover { @apply bg-ivory/10 text-ivory; }
+
+.btn-quiet {
+  @apply btn border border-ink/15 text-ink;
+}
+.btn-quiet:hover { @apply border-brass/60 bg-brass/5; }
+
+/* ── Listas editoriais ──────────────────────────────────────────── */
+.rule { border-top: 1px solid rgba(36,28,26,0.10); }
+.rule:last-child { border-bottom: 1px solid rgba(36,28,26,0.10); }
+
+.eyebrow {
+  @apply text-[0.7rem] uppercase tracking-luxe text-brass;
+}
+
+/* campos de formulário */
+.input {
+  @apply focus-ring w-full rounded-xl border border-ink/15 bg-white/60 px-4 py-3
+         text-[0.95rem] text-ink transition-colors;
+}
+.input:focus { @apply border-brass bg-white; }
